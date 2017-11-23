@@ -29,16 +29,17 @@ describe DockingStation do
   end
 
 
-  it 'should get a bike' do
+  it 'should get a working bike' do
     bike = Bike.new
     expect(bike.working?).to eq true
   end
 
   #it {is_expected.to respond_to(:dock).with(1).argument}
 
+  #no longer relevant due to newer tests:
   it 'docks something' do
     bike = Bike.new
-    expect(subject.dock(bike)).to eq bike
+    expect(subject.dock(bike)).to eq subject.bikes.push(bike)
   end
 
   #it {is_expected.to respond_to(:bike)}
@@ -46,9 +47,6 @@ describe DockingStation do
   it 'returns docked bike' do
     bike = Bike.new
     subject.dock(bike)
-    expect(subject.bikes).to eq bike
+    expect(subject.bikes).to eq subject.bikes.push(bike)
   end
 end
-
-
-#expect { ... }.to throw_symbol(:symbol, 'value')
