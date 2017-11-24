@@ -58,5 +58,18 @@ describe DockingStation do
     expect(d.capacity).to eq 20
   end
 
+  it 'should not release broken bikes' do
+    d = DockingStation.new
+    broken_bike = Bike.new
+    broken_bike.report_broken
+    d.dock(broken_bike)
+    expect{d.release_bike}.to raise_error 'No working bikes available'
+  end
+
+
+
+  # it 'stores broken bike' do
+  # end
+
 
 end
