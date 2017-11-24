@@ -50,4 +50,13 @@ describe DockingStation do
     subject.dock(bike)
     expect(subject.bikes).to eq subject.bikes.push(bike)
   end
+
+  it 'default capacity is set' do
+    expect{DockingStation.new(30)}.to_not raise_error
+    expect{DockingStation.new}.to_not raise_error
+    d = DockingStation.new
+    expect(d.capacity).to eq 20
+  end
+
+
 end
