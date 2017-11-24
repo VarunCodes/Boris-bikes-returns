@@ -66,7 +66,12 @@ describe DockingStation do
     expect{d.release_bike}.to raise_error 'No working bikes available'
   end
 
-
+  it 'should accept broken bikes' do
+    d = DockingStation.new
+    broken_bike = Bike.new
+    broken_bike.report_broken
+    expect{d.dock(broken_bike)}.to_not raise_error
+  end
 
   # it 'stores broken bike' do
   # end
